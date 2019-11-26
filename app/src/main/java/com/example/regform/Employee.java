@@ -4,18 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Dao;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.Query;
 
 import java.util.List;
 
-@Entity(tableName="employee")
+@Entity(tableName="Employee")
 public class Employee {
-@PrimaryKey(autoGenerate = true)
-@NonNull
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
     public long id;
+    @ColumnInfo(name = "login")
     public String login;
+    @ColumnInfo(name = "email")
     public String email;
+    @ColumnInfo(name = "password")
     public String password;
 
     public Employee( String login, String email, String password) {
@@ -23,7 +27,13 @@ public class Employee {
         this.email = email;
         this.password = password;
     }
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
     public String getLogin() {
         return login;
     }
